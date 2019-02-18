@@ -11,6 +11,7 @@ This are my notes about the course *Developing Cloud-Native Applications with Mi
 4) Continuous integration & Continuous delivery Deployment pipeline
 5) Advanced deplyment techniques (blue/green deployment or canary deployment)
 *) be like Super Cool Silicon Valley DotCom Startup \o/
+
 https://martinfowler.com/bliki/MicroservicePrerequisites.html
 
 If you're not mature enough, and you're not big enough, 
