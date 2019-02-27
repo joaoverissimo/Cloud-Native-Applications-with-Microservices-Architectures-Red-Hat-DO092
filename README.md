@@ -1,6 +1,10 @@
 # Cloud-Native Applications  with Microservices Architectures | Red Hat DO092
 
-This are my notes about the course *Developing Cloud-Native Applications with Microservices Architectures*. How to combine different frameworks and tools into a microservices architecture that fits your organizational needs.
+This are my notes about the course *Developing Cloud-Native Applications with Microservices Architectures*. By Burr Sutter, developer advocate from Red Hat.
+
+How to combine different frameworks and tools into a microservices architecture that fits your organizational needs.
+
+The source files are in: https://github.com/burrsutter/kube4docker
 
 ## 1 - Microservices Overview: What and Why?
 
@@ -40,4 +44,43 @@ and you not skilled enough, you probably don't want to get the microservices rid
 @burrsutter
 
 
+## 2 - API: Building and Deploying a Microservice (and demonstration)
 
+The easiest part is make a API. The other things are complex.
+
+Hot Tip: Fabric8 Maven Plugin. For instrumenting your spring boot, wf swarm, vert.x or java ee project's pom.xml.
+Hot Tip 2: go to https://start.spring.io/ and just add web dependencies
+
+#### Main commands
+mvn clean compile package
+docker build -t burr/myvertex:v1 .
+docker run -it -p 8080:8080 burr/myvertex:v1
+curl http://192.168.99.101:8080/hello
+
+kubectl get namespaces
+kubectl create -f ./kubedemo-namespace.yaml
+kubectl --namespace=kubedemo create -f kubedemo-deployment.yaml --record --validate=false
+kubectl get pods --namespace=kubedemo
+
+kubectl --namespace=kubedemo expose deployment --port=8080 myvertx --type=LoadBalancer
+kubectl --namespace=kubedemo scale deployment myvertx --replicas=3
+
+*update*
+docker build -t burr/myvertx:v2 .
+kubectl --namespace=kubedemo set image deployment/myvertx myvertx=burr/myvertx:v2
+
+*others*
+show history
+kubectl --namespace=kubedemo rollout history deployment myvertx
+
+undo 
+kubectl --namespace=kubedemo rollout undo deployment/myvertx
+
+run spring
+mvn spring-boot:run
+
+configure fabricate
+mvn io.fabric8-maven-plugin:3.3.5:setup 
+
+deploy fabricate
+mvn fabric8:deploy
