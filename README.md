@@ -52,35 +52,36 @@ Hot Tip: Fabric8 Maven Plugin. For instrumenting your spring boot, wf swarm, ver
 Hot Tip 2: go to https://start.spring.io/ and just add web dependencies
 
 #### Main commands
-mvn clean compile package
-docker build -t burr/myvertex:v1 .
-docker run -it -p 8080:8080 burr/myvertex:v1
-curl http://192.168.99.101:8080/hello
+* mvn clean compile package
+* docker build -t burr/myvertex:v1 .
+* docker run -it -p 8080:8080 burr/myvertex:v1
+* curl http://192.168.99.101:8080/hello
 
-kubectl get namespaces
-kubectl create -f ./kubedemo-namespace.yaml
-kubectl --namespace=kubedemo create -f kubedemo-deployment.yaml --record --validate=false
-kubectl get pods --namespace=kubedemo
+* kubectl get namespaces
+* kubectl create -f ./kubedemo-namespace.yaml
+* kubectl --namespace=kubedemo create -f kubedemo-deployment.yaml --record --validate=false
+* kubectl get pods --namespace=kubedemo
 
-kubectl --namespace=kubedemo expose deployment --port=8080 myvertx --type=LoadBalancer
-kubectl --namespace=kubedemo scale deployment myvertx --replicas=3
+* kubectl --namespace=kubedemo expose deployment --port=8080 myvertx --type=LoadBalancer
+* kubectl --namespace=kubedemo scale deployment myvertx --replicas=3
 
-*update*
-docker build -t burr/myvertx:v2 .
-kubectl --namespace=kubedemo set image deployment/myvertx myvertx=burr/myvertx:v2
+**update**
+* docker build -t burr/myvertx:v2 .
+* kubectl --namespace=kubedemo set image deployment/myvertx myvertx=burr/myvertx:v2
 
-*others*
+**others**
+
 show history
-kubectl --namespace=kubedemo rollout history deployment myvertx
+* kubectl --namespace=kubedemo rollout history deployment myvertx
 
 undo 
-kubectl --namespace=kubedemo rollout undo deployment/myvertx
+* kubectl --namespace=kubedemo rollout undo deployment/myvertx
 
 run spring
-mvn spring-boot:run
+* mvn spring-boot:run
 
 configure fabricate
-mvn io.fabric8-maven-plugin:3.3.5:setup 
+* mvn io.fabric8-maven-plugin:3.3.5:setup 
 
 deploy fabricate
-mvn fabric8:deploy
+* mvn fabric8:deploy
