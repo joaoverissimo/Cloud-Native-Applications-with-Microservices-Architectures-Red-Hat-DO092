@@ -85,3 +85,18 @@ configure fabricate
 
 deploy fabricate
 * mvn fabric8:deploy
+
+## Discovery & Invocation
+
+How does Service A find and then invoke service B??
+
+It's possible use NetFlixOSS Eureka and Ribbon.
+
+When you are inside the cluster, just refer to it by its service name.
+
+For exemple:
+producer -> http://producer:8080/
+
+String url = "http://producer:8080/";
+ResponseEntity<String> response  = restTemplate.getForEntity(url, String.class);
+System.out.println(response.getBody());
