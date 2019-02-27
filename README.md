@@ -86,7 +86,7 @@ configure fabricate
 deploy fabricate
 * mvn fabric8:deploy
 
-## Discovery & Invocation
+## 3- Discovery & Invocation
 
 How does Service A find and then invoke service B??
 
@@ -102,3 +102,20 @@ String url = "http://producer:8080/";
 ResponseEntity<String> response  = restTemplate.getForEntity(url, String.class);
 System.out.println(response.getBody());
 ````
+## 4 - Microservices Patterns (and demonstration)
+
+With microservices you always have to think about failure.
+
+When a failure ocours, you need think in the fallback scenario.
+
+**API Gateway**
+
+Agregate the businics logic on the server-side, also reducing network traffic to the client.
+
+**Chaining**
+
+The requests will be deep. It means to call A, B, C and D. On fail happens a cascading fail.
+
+**Mixed**
+
+The requests will be assincronous/sincronous.
