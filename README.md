@@ -97,6 +97,8 @@ When you are inside the cluster, just refer to it by its service name.
 For exemple:
 producer -> http://producer:8080/
 
+````
 String url = "http://producer:8080/";
 ResponseEntity<String> response  = restTemplate.getForEntity(url, String.class);
 System.out.println(response.getBody());
+````
