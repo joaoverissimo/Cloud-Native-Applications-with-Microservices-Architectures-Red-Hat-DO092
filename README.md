@@ -119,3 +119,7 @@ The requests will be deep. It means to call A, B, C and D. On fail happens a cas
 **Mixed**
 
 The requests will be assincronous/sincronous.
+
+## 5 - Circuit Breakers (and demonstration)
+
+Netflix OSS gave us a specific circuit breaker and bulkhead implementation called Hystrix.
