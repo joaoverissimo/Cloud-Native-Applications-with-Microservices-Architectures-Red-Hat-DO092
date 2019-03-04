@@ -123,3 +123,11 @@ The requests will be assincronous/sincronous.
 ## 5 - Circuit Breakers (and demonstration)
 
 Netflix OSS gave us a specific circuit breaker and bulkhead implementation called Hystrix.
+
+## 6 - Circuit Breakers (and demonstration)
+
+Netflix OSS gave us a specific circuit breaker and bulkhead implementation called Hystrix.
+
+## 7 - Pipelines
+
+For pipelines it's possible use jenkins. Also (by me) spinnaker.
