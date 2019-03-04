@@ -131,3 +131,41 @@ Netflix OSS gave us a specific circuit breaker and bulkhead implementation calle
 ## 7 - Pipelines
 
 For pipelines it's possible use jenkins. Also (by me) spinnaker.
+
+
+## 8 - Security
+
+You can use SSO and KeyCloak
+
+https://developers.redhat.com/blog/2017/05/25/easily-secure-your-spring-boot-applications-with-keycloak/
+
+https://github.com/sebastienblanc/spring-boot-keycloak-tutorial
+
+## 9 - Logging, Monitoring and Tracing
+
+Logging:
+* ElasticSearch - an object store where all logs are stored
+* Fluentd - Gather logs from Nodes and feeds them to Elastic
+* Kibana - A web UI for Elastic 
+
+Monitoring:
+* Heapster, hawkular, Cassandra
+
+Tracing:
+jaegertracing or opentracing.io
+
+## 10 - Blue/Green Deployment 
+
+When you are using Blue/Green we have two production enviroment. The green one is the main, and the blue is a new version. If the things break, both are up and the roolback it's fast.
+
+## 11 - Canary
+
+On this deployment, we send a tiny fraction of the user audience to a specific build.
+
+## 12 - Moving from Monolith to Microservices
+
+https://martinfowler.com/bliki/MonolithFirst.html
+
+https://www.martinfowler.com/bliki/StranglerApplication.html
+
+ff4j
